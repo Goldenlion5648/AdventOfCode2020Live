@@ -17,6 +17,9 @@ day = str(args.dayNum)
 #     day = '0'+day
 
 template = f'''
+\'''
+
+\'''
 from collections import *
 
 with open("input{day}.txt") as f:
