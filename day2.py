@@ -16,7 +16,7 @@ count = 0
 
 for x, ele in enumerate(a):
     print(ele)
-    if int(ele[0].split("-")[0]) <= (ele[-1].count(ele[1][0])) <= int(ele[0].split("-")[1]):
+    if int(ele[0].split("-")[0]) <=  (ele[-1].count(ele[1][0])) <= int(ele[0].split("-")[1]):
         count += 1
 print("part 1", count)
 
@@ -42,3 +42,8 @@ for x, ele in enumerate(a):
             continue
     
 print("part 2", count)
+
+
+
+
+

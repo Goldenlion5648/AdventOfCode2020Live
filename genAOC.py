@@ -29,9 +29,9 @@ with open("input{day}.txt") as f:
 
 
 '''
-
-with open(f"day{day}.py", 'w') as f:
-    f.write(template)
-with open(f"input{day}.txt", 'w') as f:
-    pass
+if os.path.exists(f"day{day}.py") == False:
+    with open(f"day{day}.py", 'w') as f:
+        f.write(template)
+    with open(f"input{day}.txt", 'w') as f:
+        pass
 
