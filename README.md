@@ -1,6 +1,6 @@
 # AdventOfCode2020Live
 
-# Note
+# Notes
 
 * These solutions were done in very naive ways. I am considering making a separate repo for clean solutions/ different language solutions.
 
