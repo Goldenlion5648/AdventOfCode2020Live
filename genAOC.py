@@ -28,6 +28,9 @@ with open("input{day}.txt") as f:
 
 
 
+\'''
+
+\'''
 '''
 if os.path.exists(f"day{day}.py") == False:
     with open(f"day{day}.py", 'w') as f:
