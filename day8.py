@@ -16,11 +16,25 @@ for i in range(len(a)):
 pos = 0
 acc = 0
 seen = set()
+while pos not in seen:
+    seen.add(pos)
+    if a[pos][0] == "acc":
+        acc += a[pos][1]
+        pos += 1
+    elif a[pos][0] == "jmp":
+        pos += a[pos][1]
+    else:
+        pos += 1
+    if pos == len(a):
+        shouldStop = True
+        break
 # print(a)
+print("part 1:",acc)
+
 changePos = 0
 shouldStop = False
 while not shouldStop:
-    print(changePos)
+    # print(changePos)
     if a[changePos][0] == "jmp":
         a[changePos][0] = "nop"
     elif a[changePos][0] == "nop":
