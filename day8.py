@@ -61,7 +61,7 @@ while not shouldStop:
             a[changePos][0] = "jmp"
         changePos += 1
 
-print(acc)
+print("part 2", acc)
 '''
 
 '''
