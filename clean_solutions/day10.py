@@ -4,8 +4,7 @@ with open("input10.txt") as f:
 
 a.sort()
 a = [0] + a + [a[-1] + 3]
-# print(a)
-highest = max(a) + 3
+print(a)
 oneDif = 0
 threeDif = 0
 for i in range(len(a) - 1):
@@ -18,7 +17,6 @@ for i in range(len(a) - 1):
 # print(threeDif)
 print("part 1", oneDif * threeDif)
 
-mem = []
 pos = len(a) - 1
 mem = [0 for i in range(len(a))]
 mem[-1] = 1
@@ -34,6 +32,6 @@ while pos >= 0:
                 mem[i] += mem[i+j]
 
     pos -= 1
-# print(mem)
+print(mem)
 
 print("part 2", mem[0])
