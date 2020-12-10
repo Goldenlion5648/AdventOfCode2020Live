@@ -17,6 +17,8 @@ while True:
         b.popleft()
         b.append(a[pos] + a[i])
     pos += 1
+
+    
 goal = 23278925
 #part 2
 stop = False
