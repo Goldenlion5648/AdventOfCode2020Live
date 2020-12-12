@@ -7,39 +7,179 @@ Otherwise, the seat's state does not change.
 from collections import *
 
 def checkAround(i, j, board, tileToLookFor, changeTo, countNeeded, cur, isNot, checkForMoreThan):
-    # print("Checking", i, j)
+    print("Checking", i, j)
     count = 0
     if board[i][j] == cur:
-        for y in range(-1, 2):
-            for x in range(-1, 2):
-                if x == 0 and y == 0:
-                    continue
-                if i + y >= 0 and i + y < len(board):
-                    if j + x >=0 and j + x < len(board[i]):
-                        if board[i+y][j+x] == tileToLookFor:
-                            count += 1
+        # for y in range(-1, 2):
+        #     for x in range(-1, 2):
+        #         if x == 0 and y == 0:
+        #             continue
+        #         if i + y >= 0 and i + y < len(board):
+        #             if j + x >=0 and j + x < len(board[i]):
+        #                 if board[i+y][j+x] == tileToLookFor:
+        #                     count += 1
+        for x in range(1, max(len(board), len(board[i]))):
+            if i - x >= 0:
+                cur = board[i -x][j]
+                if cur != ".":
+                    if cur == tileToLookFor:
+                        count += 1
+                    break
+        for x in range(1, max(len(board), len(board[i]))):
+            if i - x >= 0 and j - x >= 0:
+                cur = board[i -x][j-x]
+                if cur != ".":
+                    if cur == tileToLookFor:
+                        count += 1
+                    break
+        for x in range(1, max(len(board), len(board[i]))):
+            if i - x >= 0 and j + x < len(board[0]):
+                cur = board[i -x][j+x]
+                if cur != ".":
+                    if cur == tileToLookFor:
+                        count += 1
+                    break
+
+        for x in range(1, max(len(board), len(board[i]))):
+            if i + x < len(board):
+                cur = board[i +x][j]
+                if cur != ".":
+                    if cur == tileToLookFor:
+                        count += 1
+                    break
+
+
+        for x in range(1, max(len(board), len(board[i]))):
+            if j - x >= 0:
+                cur = board[i][j-x]
+                if cur != ".":
+                    if cur == tileToLookFor:
+                        count += 1
+                    break
+        for x in range(1, max(len(board), len(board[i]))):
+            if i + x < len(board) and j + x < len(board[0]):
+                cur = board[i +x][j+x]
+                if cur != ".":
+                    if cur == tileToLookFor:
+                        count += 1
+                    break
+        for x in range(1, max(len(board), len(board[i]))):
+            if i + x < len(board) and j - x >= 0:
+                cur = board[i +x][j-x]
+                if cur != ".":
+                    if cur == tileToLookFor:
+                        count += 1
+                    break
+
+        for x in range(1, len(board[i])):
+            if j + x < len(board[0]):
+                cur = board[i][j+x]
+                if cur != ".":
+                    if cur == "L":
+                        count += 1
+                    break
+            if tileToLookFor == "L":
+                print("checked")
+        
+        # if count >= countNeeded:
+        #     return True
+        # return False
+
+
                         
-        # print("count", count)
+        print("count", count)
         if checkForMoreThan:
             if count >= countNeeded:
-                # board[i][j] = changeTo
-                # print("changed1", i,j)
                 return True
         else:
             if count == countNeeded:
-                # board[i][j] = changeTo
-                # print("changed1", i,j)
                 return True
        
-        # else:
-        #     if count >= countNeeded:
-        #         board[i][j] = changeTo
-        #         # print("changed1", i,j)
-        #         return True
+ 
            
     return False
-    # print("count was", count)
-    # return board
+
+def countAround2(i, j, tileToLookFor, board):
+    count =0
+    # print("checking", i, j)
+    for x in range(1, max(len(board), len(board[i]))):
+        if i - x >= 0:
+            cur = board[i -x][j]
+            if cur != ".":
+                if cur == tileToLookFor:
+                    count += 1
+                    # print("was0")
+                break
+    for x in range(1, max(len(board), len(board[i]))):
+        if i - x >= 0 and j - x >= 0:
+            cur = board[i -x][j-x]
+            if cur != ".":
+                if cur == tileToLookFor:
+                    count += 1
+                    # print("was1")
+
+                break
+    for x in range(1, max(len(board), len(board[i]))):
+        if i - x >= 0 and j + x < len(board[0]):
+            cur = board[i -x][j+x]
+            if cur != ".":
+                if cur == tileToLookFor:
+                    count += 1
+                    # print("was9")
+
+                break
+
+    for x in range(1, max(len(board), len(board[i]))):
+        if i + x < len(board):
+            cur = board[i +x][j]
+            if cur != ".":
+                if cur == tileToLookFor:
+                    count += 1
+                    # print("was2")
+
+                break
+
+
+    for x in range(1, max(len(board), len(board[i]))):
+        if j - x >= 0:
+            cur = board[i][j-x]
+            if cur != ".":
+                if cur == tileToLookFor:
+                    count += 1
+                    # print("was3")
+                
+                break
+    for x in range(1, max(len(board), len(board[i]))):
+        if i + x < len(board) and j + x < len(board[0]):
+            cur = board[i +x][j+x]
+            if cur != ".":
+                if cur == tileToLookFor:
+                    count += 1
+                    # print("was4")
+                
+                break
+    for x in range(1, max(len(board), len(board[i]))):
+        if i + x < len(board) and j - x >= 0:
+            cur = board[i +x][j-x]
+            if cur != ".":
+                if cur == tileToLookFor:
+                    count += 1
+                    # print("was5")
+                
+                break
+
+    for x in range(1, len(board[i])):
+        if j + x < len(board[0]):
+            cur = board[i][j+x]
+            if cur != ".":
+                if cur == tileToLookFor:
+                    count += 1
+                    # print("was6")
+
+                break
+    # print(i, j, count)
+    return count
+
 
 with open("input11.txt") as f:
     # a = list(map(int,f.read().strip().split("\n")))
@@ -56,14 +196,17 @@ for x in range(1000):
     for i in range(len(a)):
         for j in range(len(a[i])):
             
+            if temp[i][j] == "L":
+                temp[i][j] = "#" if countAround2(i,j,"#", a) == 0 else "L"
+            if temp[i][j] == "#":
+                temp[i][j] = "L" if countAround2(i,j,"#", a) >= 5 else "#"
+            # temp[i][j] = "#" if copy.deepcopy(\
+            #     checkAround(i, j, a, "#",
+            #  "#", 0, "L", False, False)) else temp[i][j] 
 
-            temp[i][j] = "#" if copy.deepcopy(\
-                checkAround(i, j, a, "#",
-             "#", 0, "L", False, False)) else temp[i][j] 
-
-            temp[i][j] = "L" if copy.deepcopy(\
-                checkAround(i, j, a, "#",
-             "L", 5, "#", False, True)) else temp[i][j] 
+            # temp[i][j] = "L" if copy.deepcopy(\
+            #     checkAround(i, j, a, "#",
+            #  "L", 5, "#", False, True)) else temp[i][j] 
         # for i in a:
         #     print("".join(i))
         # print("9"*48)
@@ -76,8 +219,8 @@ for x in range(1000):
     for i in range(len(a)):
         prev[i] = a[i].copy()
     # prev = copy.deepcopy(a)
-    # for i in a:
-    #     print("".join(i))
+    for i in a:
+        print("".join(i))
     print("="*48)
 
 occ = 0
