@@ -1,15 +1,5 @@
-
-'''
-
-'''
-from collections import *
-
 with open("input14.txt") as f:
-    # a = list(map(int,f.read().strip().split("\n")))
     a = f.read().strip().split("\n")
-
-# print(a)
-# for i in a:
 mem = dict()
 line = 0
 cur = list('0' * 36)
@@ -30,9 +20,6 @@ while True:
         c = "0" * (36 - len(c)) + c
         addressAsBin = bin(int(b[0][4:-1]))[2:]
         address = "0" * (36 - len(addressAsBin)) + addressAsBin
-        # print("address\n", address)
-        # print(c)
-        # print("cur", "".join(cur))
         flips = []
         address = list(address)
         for x, ele in enumerate(address):
@@ -47,8 +34,6 @@ while True:
                 pass
         print("flips", flips)
         curString = "".join(address)
-        # print("address after\n", curString)
-        # print(b[0][4:-1])
         maxN = 2**len(flips)
         binStrings = []
         for i in range(maxN):
@@ -57,8 +42,6 @@ while True:
             bina = '0' * (len(bin(maxN-1)[2:]) - len(binNum)) + binNum
             # print(bina)
             binStrings.append(bina)
-        # print("binStrings", binStrings)
-        # for poses in binStrings:
         curPos = 0
         # print("before address", address)
         print(len(address))
