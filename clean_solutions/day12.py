@@ -17,7 +17,6 @@ def part1(a):
             y -= amount
         elif i[0] =="S":
             y += amount
-        angle = angle % 360
 
         if i[0] =="L":
             angle -= amount
@@ -32,6 +31,8 @@ def part1(a):
                 x += amount
             elif angle == 270:
                 x -= amount
+                
+        angle = angle % 360
     print("part 1:", abs(x) + abs(y))
 
 def part2(a):
