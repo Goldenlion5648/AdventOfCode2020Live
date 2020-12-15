@@ -23,7 +23,6 @@ print(nums)
 recent = a[-1]
 turn = len(a) + 1
 while turn < 30000000 + 1:
-    # print("recent", recent)
     if turn % 10000 == 0:
         print(turn)
     if len(said[recent]) == 1:
