@@ -21,6 +21,7 @@ template = f'''
 
 \'''
 from collections import *
+from math import *
 
 with open("input{day}.txt") as f:
     a = list(map(int,f.read().strip().split("\\n")))
