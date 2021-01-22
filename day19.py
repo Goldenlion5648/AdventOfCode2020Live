@@ -3,7 +3,6 @@ from math import *
 import re
 
 with open("input19.txt") as f:
-    # a = list(map(int,f.read().strip().split("\n")))
     a = f.read().strip().split("\n")
 
 # a.sort()
@@ -26,20 +25,30 @@ for i in begin:
     pipeIn = "|" in cur
     # if pipeIn:
     # cur = list(cur)
-    print("cur===============", cur)
-    cur = cur.split(" ")
-    print("new cur===========================", cur)
+    # print("cur===============", cur)
+    # print("new cur===========================", cur)
     # cur = cur.replace(" ", "")
+    cur = cur.split(" ")
     letterPos = 0
-    # while letterPos < len(cur):
-    #     if cur[letterPos].isnumeric():
-    #         cur.insert(letterPos+1, ")")
-    #         cur.insert(letterPos, "(")
-    #         letterPos += 1
-    #     letterPos += 1
-    # cur.insert(0, "(")
-    # cur.append(")")
-    if pipeIn:
+    # if num == "11":
+    #     x = 1
+    #     while x < len(cur):
+    #         cur.insert(x, "(")
+    #         cur.insert(x, ")")
+    #         x += 3
+    #     cur.insert(0, "((")
+    #     cur.append("))")
+        # cur.insert(3, "q")
+        # print(cur)
+        # assert False
+
+    if num == "8":
+        cur.insert(0, "(")
+        cur.append(")")
+        cur.append("+")
+        # print(cur)
+
+    elif pipeIn:
         z = 0
         while z < len(cur):
             if cur[z].isnumeric():
@@ -57,9 +66,6 @@ for i in begin:
         cur.append(")")
     else:
         try:
-            # mid = cur.index(" ", 1)
-            # cur.insert(mid, ")(")
-            # cur.insert(mid, ")")
             x = 1
             while x < len(cur):
                 cur.insert(x, "(")
@@ -69,25 +75,13 @@ for i in begin:
             cur.append("))")
         except:
             print("failed")
+            assert False
 
-        # cur.insert(cur.index("|"), ")")
-        # cur.insert(cur.index("|")+2, "(")
-    # print("cur2", cur)
-    # cur = "(" + cur[:cur.index("|")] + ")" +
-    # print("split", cur)
-    # if type(cur[0]) == str:
-    # cur[0] = cur[0].replace("\"", "")
-    # print("cur[0]", cur[0])
-    if num == "8":
-        # cur.append("+")
-        print(cur)
+
         # assert False
     # if num == "11":
         #42
 
-
-        # print(cur)
-        # assert False
     if "\"" in cur[0]:
         rules[num].append(cur[0].replace("\"", ""))
     else:
@@ -99,10 +93,12 @@ letters = dict()
 for key in rules:
     if any(j.isalpha() for j in rules[key]):
         letters[key] = rules[key]
+print("new rules")
 for i in rules:
-    print(i, ":", "".join(rules[i]))
+    print(i, ":", rules[i])
 print("before", letters)
 changed = True
+# letters["500"] = ["500"]
 
 while changed:
     changed = False
@@ -110,9 +106,16 @@ while changed:
         for char in range(len(rules[key])):
             # print("rules[key]", rules[key])
             # print("rules[key][char]", rules[key][char])
+            # if rules[key][char] == "500":
+            #     assert False
             if rules[key][char] in letters:
+                if rules[key][char] == "11":
+                    continue
+                #     assert False
                 rules[key][char:char+1] = letters[rules[key][char]]
-                changed = True
+                # if rules[key][char] != "500":
+                #     changed = True
+
                 if key not in letters:
                     letters[key] = rules[key]
                     # print("new letters", letters)
@@ -127,11 +130,11 @@ rg = re.compile(rg)
 print(rg)
 answer = 0
 for i in samples:
-    print(i)
+    # print(i)
     found = re.search(rg, i)
     # print(found)
     if found is not None and found.span() == (0, len(i)):
-        print("matched")
+        # print("matched")
         answer += 1
 
 print(answer)
